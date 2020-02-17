@@ -4,6 +4,10 @@
 
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     background-image: url("./penpenic.jpg");
     background-blend-mode: luminosity;
