@@ -5,7 +5,7 @@
 	"scope" : "/PenpenicTimesTable/",
 	"display" : "standalone",
 	"start_url" : "/PenpenicTimesTable/",
-	"short_name" : "Tableau d'heure",
+	"short_name" : "Tableau d'heures",
 	"theme_color" : "transparent",
 	"description" : "Una application qui permet de calculer ses heures de travail facilement.",
 	"orientation" : "landscape",
