@@ -4,7 +4,7 @@
 	"name" : "Tableau d'heures v2",
 	"scope" : "/PenpenicTimesTable/",
 	"display" : "standalone",
-	"start_url" : "https://alexandre-borghi.github.io/PenpenicTimesTable/",
+	"start_url" : "/PenpenicTimesTable/",
 	"short_name" : "Tableau d'heure",
 	"theme_color" : "transparent",
 	"description" : "Una application qui permet de calculer ses heures de travail facilement.",
