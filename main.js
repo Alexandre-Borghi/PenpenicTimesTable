@@ -29,6 +29,21 @@ window.onload = function() {
 
     loadTimes();
     computeTimes();
+
+    // Add to homescreen popup
+
+    // Detects if device is on iOS 
+    const isIos = () => {
+        const userAgent = window.navigator.userAgent.toLowerCase();
+        return /iphone|ipad|ipod/.test( userAgent );
+    }
+
+    // Detects if device is in standalone mode
+    const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+    if (isIos() && !isInStandaloneMode()) {
+        document.getElementById("popup").style["display"] = "block";
+    }
 }
 
 function createTimebox(x, y) {
@@ -81,7 +96,7 @@ function loadTimes() {
     
     var stringTimesLoaded = localStorage.savedtimes;
 
-    if (stringTimesLoaded == "undefined") {
+    if (stringTimesLoaded == "undefined" || stringTimesLoaded == undefined) {
         localStorage.savedtimes = `{"10":"00:00","11":"00:00","12":"00:00","13":"00:00","14":"00:00","15":"00:00","20":"00:00","21":"00:00","22":"00:00","23":"00:00","24":"00:00","25":"00:00","30":"00:00","31":"00:00","32":"00:00","33":"00:00","34":"00:00","35":"00:00","00":"00:00","01":"00:00","02":"00:00","03":"00:00","04":"00:00","05":"00:00"}`
     }
 
@@ -185,21 +200,4 @@ function reset() {
 
     loadTimes();
     computeTimes();
-}
-
-
-
-// Add to homescreen popup
-
-// Detects if device is on iOS 
-const isIos = () => {
-    const userAgent = window.navigator.userAgent.toLowerCase();
-    return /iphone|ipad|ipod/.test( userAgent );
-}
-
-// Detects if device is in standalone mode
-const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
-
-if (isIos() && !isInStandaloneMode()) {
-    
 }

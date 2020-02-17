@@ -66,3 +66,20 @@ div.center {
         background-position: -250px -150px;
     }
 }
+
+#popup {
+    width: 100%;
+    margin: auto;
+    
+    text-align: center;
+
+    position: fixed;
+    bottom: 0;
+
+    display: none;
+}
+
+#popup > * {
+    width: 100%;
+    max-width: 400px;
+}
