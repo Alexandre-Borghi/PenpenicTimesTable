@@ -9,7 +9,7 @@
 	"theme_color" : "transparent",
 	"description" : "Una application qui permet de calculer ses heures de travail facilement.",
 	"orientation" : "landscape",
-	"background_color" : "pick",
+	"background_color" : "#C89696",
 	"related_applications" : [],
 	"prefer_related_applications" : false,
 	"icons" : [
