@@ -6,12 +6,16 @@
 
 html {
     overflow-x: hidden;
+    width: 97vw;
+    height: 97vh;
+    margin: auto;
 }
 
 body {
     background-image: url("./penpenic.jpg");
     background-blend-mode: luminosity;
     background-color: rgba(200, 150, 150, 255);
+    background-position: -20px 0;
 }
 
 h1 {
