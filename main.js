@@ -32,14 +32,16 @@ window.onload = function() {
 
     // Add to homescreen popup
 
-    // Detects if device is on Safari
-    var sBrowser, sUsrAg = navigator.userAgent;
-    const isSafari = sUsrAg.indexOf("Safari") > -1
+    // Detects if device is on iOS 
+    const isIos = () => {
+        const userAgent = window.navigator.userAgent.toLowerCase();
+        return /iphone|ipad|ipod/.test( userAgent );
+    }
 
     // Detects if device is in standalone mode
     const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
 
-    if (isSafari && !isInStandaloneMode()) {
+    if (isIos() && !isInStandaloneMode()) {
         document.getElementById("popup").style["display"] = "block";
     }
 }
