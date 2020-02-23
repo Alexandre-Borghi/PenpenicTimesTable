@@ -25,11 +25,11 @@
             var satline = document.getElementsByClassName("saturdayline");
             
             for (let e of satline) {
-                e.style.display = satcb.checked ? "none" : "block";
+                e.style.display = satcb.checked ? "block" : "none";
                 localStorage.satcb = satcb.checked;
             }
 
-            document.getElementById("saturday").style["grid-row"] = satcb.checked ? "6 / 7" : "7 / 8";
+            document.getElementById("saturday").style["grid-row"] = satcb.checked ? "7 / 8" : "6 / 7";
         }
     </script>
 </head>
