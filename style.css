@@ -27,7 +27,7 @@ h1 {
 
 #table {
     display: grid;
-    grid-template-columns: 5fr 5fr 5fr 5fr 5.2fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
     width: 100%;
     max-width: 600px;
@@ -37,10 +37,6 @@ h1 {
 
 #global {
     grid-column: 5 / 6;
-}
-
-input[type="text"] {
-    width: 100%;
 }
 
 input[type^="t"] {
@@ -92,8 +88,13 @@ div.center {
 }
 
 #debug {
+    width: 1;
+    margin: auto;
+    
+    text-align: center;
+    
     font-family: Roboto;
-    position: fixed;
-    bottom: 0;
-    right: 1vw;
+
+    background-color: white;
+    color: black;
 }
