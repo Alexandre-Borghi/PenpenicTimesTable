@@ -72,6 +72,34 @@ div.center {
     border-color: white;
 }
 
+#saturday {
+    grid-column: 1 / 5;
+    grid-row: 7 / 8;
+
+    padding-left: 5px;
+
+    height: 60%;
+
+    color: black;
+
+    font-size: 15px;
+    font-family: Roboto;
+
+    text-align: left;
+
+    line-height: 100%;
+}
+
+#saturday > span > p {
+    display: inline-block;
+}
+
+#saturday > span {
+    background-color: white;
+
+    padding: 2% 4% 2% 4%;
+}
+
 @media screen and (max-width: 750px) {
     body {
         background-attachment: fixed;

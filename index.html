@@ -19,16 +19,35 @@
     <link rel="stylesheet" href="./style.css">
     
     <script src="./main.js"></script>
+    <script>
+        function displaySat() {
+            var satcb = document.getElementById("displaySat");
+            var satline = document.getElementsByClassName("saturdayline");
+            
+            for (let e of satline) {
+                e.style.display = satcb.checked ? "none" : "block";
+                localStorage.satcb = satcb.checked;
+            }
+
+            document.getElementById("saturday").style["grid-row"] = satcb.checked ? "6 / 7" : "7 / 8";
+        }
+    </script>
 </head>
 <body>
     <h1>Tableau des heures</h1>
 
-    <div id="table"></div>
+    <div id="table">
+        <div id="saturday">
+            <span>
+                <input type="checkbox" name="displaySat" id="displaySat" onclick="displaySat();"><p>Samedi</p>
+            </span>
+        </div>
+    </div>
 
     <div class="center"><button onclick="reset()" id="reset">Reset</button></div>
 
     <br><br>
-    <p id="debug">Version 1.1</p>
+    <p id="debug">Version 1.2</p>
 
     <div id="popup"><img src="./addpopup.png"></div>
 </body>

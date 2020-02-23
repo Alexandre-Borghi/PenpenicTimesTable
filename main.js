@@ -12,6 +12,14 @@ window.onload = function() {
         let eveningEnd   = createTimebox(3, i);
         let result       = createTimebox(4, i);
 
+        if (i == 5) { // Saturday
+            morningStart.classList.add("saturdayline");
+            morningEnd.classList.add("saturdayline");
+            eveningStart.classList.add("saturdayline");
+            eveningEnd.classList.add("saturdayline");
+            result.classList.add("saturdayline");
+        }
+
         tablediv.appendChild(morningStart);
         tablediv.appendChild(morningEnd);
         tablediv.appendChild(eveningStart);
@@ -44,6 +52,11 @@ window.onload = function() {
     if (isIos() && !isInStandaloneMode()) {
         document.getElementById("popup").style["display"] = "block";
     }
+
+    // Saturday checkbox
+
+    document.getElementById("displaySat").checked = localStorage.satcb == "true" ? true : false;
+    displaySat();
 }
 
 function createTimebox(x, y) {
@@ -68,6 +81,8 @@ function createTimebox(x, y) {
         timebox.addEventListener('input', saveTimes);
         timebox.classList.add("timeinput");
     }
+
+    timebox.style = "display: block;";
 
     timebox.value = "00:00";
 
