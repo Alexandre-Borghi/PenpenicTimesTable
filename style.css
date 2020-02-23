@@ -29,7 +29,7 @@ h1 {
     display: grid;
     grid-template-columns: 15% 15% 15% 15% 25%;
 
-    gap: 3.75%;
+    column-gap: 3.75%;
 
     width: 100%;
     max-width: 600px;
