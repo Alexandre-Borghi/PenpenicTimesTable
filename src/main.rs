@@ -1,10 +1,18 @@
 use yew::function_component;
 use yew::prelude::*;
 
+mod components;
+use components::TimesTable;
+
+mod model;
+
 #[function_component(App)]
 fn app() -> Html {
     html! {
-        <div>{ "Hey" }</div>
+        <>
+            <h1>{ "Tableau d'heures v3" }</h1>
+            <TimesTable></TimesTable>
+        </>
     }
 }
 
