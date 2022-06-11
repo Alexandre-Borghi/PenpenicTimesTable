@@ -1,3 +1,75 @@
 PenpenicTimesTable:
-    ☐ Add a manifest.json for PWA installation
-    ☐ Add a service worker for precaching and offline availability
+    View:
+        All code in this section must be placed in a `components` module.
+
+        ☐ `TimesTable` component
+            This component must contain 5 or 6 `TimesTableRow` components (the last one being the saturday entry that
+            must be togglable using a checkbox placed under the grid). These components must be placed in a <form>.
+
+            ☐ `TimesTableRow` component
+                This component must contain 2 `TimesTableRowRange`: one for the morning and one for the afternoon. It
+                should also contain a 'total' label that displays the time worked in the day and is updated each time
+                one of its ranges is modified, through an `on_changed` callback in the props.
+                Must be highlighted if is corresponds to the current day of the week. To do this, it takes the number of
+                the day in the props (u8 in [1;5|6], as the week goes from Sunday (0) to Saturday (6)).
+                As the table is a Bootstrap 'Form grid', the components must be wrapped in a div with class form-row.
+
+                ☐ `TimesTableRowRange` component
+                    This component should have two time inputs: start and end. It should be able to compute the
+                    `Duration` given the start and end.
+                    As this component will be placed in a Bootstrap 'Form grid', the 2 inputs should each be in a div
+                    with class 'col'. They should be wrapped in a fragment.
+                    This component should be passed an `on_changed` callback in the props. This callback should have as
+                    signature: `fn on_changed(duration_minutes: u32)`.
+            
+            ☐ Reset button
+                This button must be placed under the grid and the 'saturday' toggle. It must be red. It must show a
+                confirmation pop-up before taking any action. If confirmed, the button must reset the whole times table.
+
+            ☐ ContextProvider
+                The component contains a `TimesTableState` state which is passed to all the `TimesTableRow` children of
+                the times table. Any modification to this object must trigger a save to the `localStorage`.
+
+    Model:
+        Code in this section should be placed in a `model` module.
+
+        The 4 following struct must all `#[derive(Debug, Serialize, Deserialize)]`, so that the state can be saved in
+        JSON format to the `localStorage` for persistence.
+
+        ☐ `TimesTableState` struct
+            This struct has an array of 6 `Days` struct and a `show_saturday` boolean.
+        
+        ☐ `Day` struct
+            This struct contains 2 `TimesRange` attributes: `morning` and `afternoon`.
+        
+        ☐ `TimesRange` struct
+            This struct has 2 `Time` attributes: `start` and `end`.
+            
+        ☐ `Time` struct
+            Holds `hours` (u8 in [0;23]) and `minutes` (u8 in [0;59])
+
+            ☐ `fn from_time_input_value(value: String) -> Option<Self>`
+                This function should accept empty strings and strings of the form 'hh:mm' or 'hh:mm:ss'. If present,
+                seconds will therefore be discarded. If passed an empty string or any invalid string, the function must
+                return `None`. Else, it should return a `Time` struct containing hours and minutes.
+
+                ☐ Implementation
+                ☐ Tests
+        
+        ☐ `fn duration_from_time_inputs_values(start_value: String, end_value: String) -> Result<Option<u32>, TimesTableError>`
+            This function accepts two <input type="time"> values. These 2 strings should then be converted to `Time`
+            structs using `Time::from_time_input_value`. If at least one of the 2 `Option` resulting from the
+            conversions is `None`, `Ok(None)` should be returned.
+            Else, compute the duration in minutes. If the duration is negative, return
+            `TimesTableError::NegativeDuration`. Else, return `Ok(Some(duration))`.
+
+            ☐ Implementation
+            ☐ Tests
+        
+        ☐ `TimesTableError` enum
+            This enum contains errors that can happen during usage of the app.
+                -- `NegativeDuration`: The end time was before the start time.
+
+    PWA:
+        ☐ Add a manifest.json for PWA installation
+        ☐ Add a service worker for precaching and offline availability
