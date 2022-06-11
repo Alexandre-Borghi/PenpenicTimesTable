@@ -1,5 +1,5 @@
 [package]
-name = "PenpenicTimesTable"
+name = "penpenic_times_table"
 version = "3.0.0-alpha.1"
 edition = "2021"
 
