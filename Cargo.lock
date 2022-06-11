@@ -192,6 +192,8 @@ dependencies = [
 name = "penpenic_times_table"
 version = "3.0.0-alpha.1"
 dependencies = [
+ "serde",
+ "serde_json",
  "yew",
 ]
 
