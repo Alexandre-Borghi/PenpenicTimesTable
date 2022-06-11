@@ -1,0 +1,7 @@
+[package]
+name = "PenpenicTimesTable"
+version = "3.0.0-alpha.1"
+edition = "2021"
+
+[dependencies]
+yew = "0.19.*"
