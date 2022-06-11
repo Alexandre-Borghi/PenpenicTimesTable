@@ -1,0 +1,3 @@
+PenpenicTimesTable:
+    ☐ Add a manifest.json for PWA installation
+    ☐ Add a service worker for precaching and offline availability
