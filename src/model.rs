@@ -69,6 +69,12 @@ mod tests {
         new_with_valid_input(0, 0)?;
         new_with_valid_input(23, 59)?;
 
+        // Bad input
+        new_with_bad_input(30, 33);
+        new_with_bad_input(24, 20);
+        new_with_bad_input(15, 123);
+        new_with_bad_input(15, 60);
+
         Ok(())
     }
 
@@ -77,6 +83,12 @@ mod tests {
         assert_eq!(t.hours, hours);
         assert_eq!(t.minutes, minutes);
         Ok(())
+    }
+
+    fn new_with_bad_input(hours: u8, minutes: u8) {
+        if Time::new(hours, minutes).is_ok() {
+            panic!("Time::new succeeds on bad input");
+        }
     }
 
     #[test]

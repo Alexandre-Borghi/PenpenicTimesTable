@@ -60,10 +60,10 @@ PenpenicTimesTable:
 
             ☐ `fn new(hours: u8, minutes: u8)`
                 ✔ Implementation @done(22-06-12 23:16)
-                ☐ Tests
+                ✔ Tests @done(22-06-12 23:30)
                     ✔ Normal values @done(22-06-12 23:12)
                     ✔ Edge cases @done(22-06-12 23:21)
-                    ☐ Wrong values
+                    ✔ Bad values @done(22-06-12 23:30)
 
             ☐ `fn from_time_input_value(value: String) -> Option<Self>`
                 This function should accept empty strings and strings of the form 'hh:mm' or 'hh:mm:ss'. If present,
