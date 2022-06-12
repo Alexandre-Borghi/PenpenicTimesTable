@@ -82,20 +82,36 @@ mod tests {
     #[test]
     fn parses_hh_mm() -> Result<(), TimesTableError> {
         // Normal input
-        parses_valid_hh_mm("05:30", 5, 30);
-        parses_valid_hh_mm("10:20", 10, 20);
-        parses_valid_hh_mm("13:54", 13, 54);
-        parses_valid_hh_mm("19:27", 19, 27);
+        parses_valid_time_input_value("05:30", 5, 30);
+        parses_valid_time_input_value("10:20", 10, 20);
+        parses_valid_time_input_value("13:54", 13, 54);
+        parses_valid_time_input_value("19:27", 19, 27);
 
         // Edge cases
-        parses_valid_hh_mm("00:00", 0, 0);
-        parses_valid_hh_mm("12:00", 12, 0);
-        parses_valid_hh_mm("23:59", 23, 59);
+        parses_valid_time_input_value("00:00", 0, 0);
+        parses_valid_time_input_value("12:00", 12, 0);
+        parses_valid_time_input_value("23:59", 23, 59);
 
         Ok(())
     }
 
-    fn parses_valid_hh_mm(value: &str, hours: u8, minutes: u8) {
+    #[test]
+    fn parses_hh_mm_ss() -> Result<(), TimesTableError> {
+        // Normal input
+        parses_valid_time_input_value("05:30:56", 5, 30);
+        parses_valid_time_input_value("10:20:22", 10, 20);
+        parses_valid_time_input_value("13:54:47", 13, 54);
+        parses_valid_time_input_value("19:27:33", 19, 27);
+
+        // Edge cases
+        parses_valid_time_input_value("00:00:00", 0, 0);
+        parses_valid_time_input_value("12:00:00", 12, 0);
+        parses_valid_time_input_value("23:59:59", 23, 59);
+
+        Ok(())
+    }
+
+    fn parses_valid_time_input_value(value: &str, hours: u8, minutes: u8) {
         let t = Time::from_time_input_value(value).unwrap();
         assert_eq!(t, Time::new(hours, minutes).expect("could not create Time"));
     }
