@@ -87,6 +87,11 @@ mod tests {
         parses_valid_hh_mm("13:54", 13, 54);
         parses_valid_hh_mm("19:27", 19, 27);
 
+        // Edge cases
+        parses_valid_hh_mm("00:00", 0, 0);
+        parses_valid_hh_mm("12:00", 12, 0);
+        parses_valid_hh_mm("23:59", 23, 59);
+
         Ok(())
     }
 
