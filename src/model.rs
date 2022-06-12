@@ -44,7 +44,12 @@ impl Time {
         let mut splits = value.split(':');
         let hours = splits.next()?.parse::<u8>().ok()?;
         let minutes = splits.next()?.parse::<u8>().ok()?;
-        Some(Self { hours, minutes })
+        let time = Self::new(hours, minutes);
+        if let Ok(time) = time {
+            Some(time)
+        } else {
+            None
+        }
     }
 }
 
@@ -92,7 +97,7 @@ mod tests {
     }
 
     #[test]
-    fn parses_hh_mm() -> Result<(), TimesTableError> {
+    fn time_parses_hh_mm() -> Result<(), TimesTableError> {
         // Normal input
         parses_valid_time_input_value("05:30", 5, 30);
         parses_valid_time_input_value("10:20", 10, 20);
@@ -108,7 +113,7 @@ mod tests {
     }
 
     #[test]
-    fn parses_hh_mm_ss() -> Result<(), TimesTableError> {
+    fn time_parses_hh_mm_ss() -> Result<(), TimesTableError> {
         // Normal input
         parses_valid_time_input_value("05:30:56", 5, 30);
         parses_valid_time_input_value("10:20:22", 10, 20);
@@ -123,8 +128,25 @@ mod tests {
         Ok(())
     }
 
+    #[test]
+    fn time_doesnt_parse_bad_input() {
+        doesnt_parse_bad_input("");
+        doesnt_parse_bad_input("bad input");
+        doesnt_parse_bad_input("-10:20");
+        doesnt_parse_bad_input("30:20");
+        doesnt_parse_bad_input("24:20");
+        doesnt_parse_bad_input("10:123");
+        doesnt_parse_bad_input("12:60");
+    }
+
     fn parses_valid_time_input_value(value: &str, hours: u8, minutes: u8) {
         let t = Time::from_time_input_value(value).unwrap();
         assert_eq!(t, Time::new(hours, minutes).expect("could not create Time"));
+    }
+
+    fn doesnt_parse_bad_input(value: &str) {
+        if Time::from_time_input_value(value).is_some() {
+            panic!("Time::from_time_input_value succeeds with bad input");
+        }
     }
 }
