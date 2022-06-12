@@ -44,6 +44,16 @@ PenpenicTimesTable:
         
         ☐ `TimesRange` struct
             This struct has 2 `Time` attributes: `start` and `end`.
+
+            ☐ `fn duration_from_time_inputs_values(start_value: String, end_value: String) -> Result<Option<u32>, TimesTableError>`
+                This function accepts two <input type="time"> values. These 2 strings should then be converted to `Time`
+                structs using `Time::from_time_input_value`. If at least one of the 2 `Option` resulting from the
+                conversions is `None`, `Ok(None)` should be returned.
+                Else, compute the duration in minutes. If the duration is negative, return
+                `TimesTableError::NegativeDuration`. Else, return `Ok(Some(duration))`.
+
+                ☐ Implementation
+                ☐ Tests
             
         ☐ `Time` struct
             Holds `hours` (u8 in [0;23]) and `minutes` (u8 in [0;59])
@@ -53,18 +63,8 @@ PenpenicTimesTable:
                 seconds will therefore be discarded. If passed an empty string or any invalid string, the function must
                 return `None`. Else, it should return a `Time` struct containing hours and minutes.
 
-                ☐ Implementation
+                ✔ Implementation @done(22-06-12 17:32)
                 ☐ Tests
-        
-        ☐ `fn duration_from_time_inputs_values(start_value: String, end_value: String) -> Result<Option<u32>, TimesTableError>`
-            This function accepts two <input type="time"> values. These 2 strings should then be converted to `Time`
-            structs using `Time::from_time_input_value`. If at least one of the 2 `Option` resulting from the
-            conversions is `None`, `Ok(None)` should be returned.
-            Else, compute the duration in minutes. If the duration is negative, return
-            `TimesTableError::NegativeDuration`. Else, return `Ok(Some(duration))`.
-
-            ☐ Implementation
-            ☐ Tests
         
         ☐ `TimesTableError` enum
             This enum contains errors that can happen during usage of the app.

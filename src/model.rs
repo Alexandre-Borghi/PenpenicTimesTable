@@ -30,3 +30,12 @@ struct Time {
     hours: u8,
     minutes: u8,
 }
+
+impl Time {
+    fn from_time_input_value(value: String) -> Option<Self> {
+        let mut splits = value.split(':');
+        let hours = splits.next()?.parse::<u8>().ok()?;
+        let minutes = splits.next()?.parse::<u8>().ok()?;
+        Some(Self { hours, minutes })
+    }
+}
