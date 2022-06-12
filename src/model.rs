@@ -59,8 +59,8 @@ mod tests {
 
     #[test]
     fn new_works() -> Result<(), TimesTableError> {
-        new_with_valid_input(10, 20)?;
         new_with_valid_input(5, 30)?;
+        new_with_valid_input(10, 20)?;
         new_with_valid_input(13, 54)?;
         new_with_valid_input(19, 27)?;
         Ok(())
@@ -75,11 +75,17 @@ mod tests {
 
     #[test]
     fn parses_hh_mm() -> Result<(), TimesTableError> {
-        assert_eq!(
-            Time::from_time_input_value("05:30").unwrap(),
-            Time::new(5, 30)?
-        );
+        // Normal input
+        parses_valid_hh_mm("05:30", 5, 30);
+        parses_valid_hh_mm("10:20", 10, 20);
+        parses_valid_hh_mm("13:54", 13, 54);
+        parses_valid_hh_mm("19:27", 19, 27);
 
         Ok(())
+    }
+
+    fn parses_valid_hh_mm(value: &str, hours: u8, minutes: u8) {
+        let t = Time::from_time_input_value(value).unwrap();
+        assert_eq!(t, Time::new(hours, minutes).expect("could not create Time"));
     }
 }
