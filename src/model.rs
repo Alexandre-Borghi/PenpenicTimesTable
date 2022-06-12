@@ -59,10 +59,16 @@ mod tests {
 
     #[test]
     fn new_works() -> Result<(), TimesTableError> {
+        // Normal input
         new_with_valid_input(5, 30)?;
         new_with_valid_input(10, 20)?;
         new_with_valid_input(13, 54)?;
         new_with_valid_input(19, 27)?;
+
+        // Edge cases
+        new_with_valid_input(0, 0)?;
+        new_with_valid_input(23, 59)?;
+
         Ok(())
     }
 

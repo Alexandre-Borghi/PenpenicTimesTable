@@ -62,7 +62,7 @@ PenpenicTimesTable:
                 ✔ Implementation @done(22-06-12 23:16)
                 ☐ Tests
                     ✔ Normal values @done(22-06-12 23:12)
-                    ☐ Edge cases
+                    ✔ Edge cases @done(22-06-12 23:21)
                     ☐ Wrong values
 
             ☐ `fn from_time_input_value(value: String) -> Option<Self>`
