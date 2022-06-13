@@ -71,7 +71,7 @@ PenpenicTimesTable:
                 return `None`. Else, it should return a `Time` struct containing hours and minutes.
 
                 ✔ Implementation @done(22-06-12 17:32)
-                ☐ Tests
+                ✔ Tests @done(22-06-13 09:22)
         
         ☐ `TimesTableError` enum
             This enum contains errors that can happen during usage of the app.
