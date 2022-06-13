@@ -270,7 +270,7 @@ async function load(module, imports) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('penpenic_times_table-e01c65aa372233bf_bg.wasm', import.meta.url);
+        input = new URL('penpenic_times_table-386213d357d340ef_bg.wasm', import.meta.url);
     }
     const imports = {};
     imports.wbg = {};
@@ -474,8 +474,8 @@ async function init(input) {
     imports.wbg.__wbindgen_throw = function(arg0, arg1) {
         throw new Error(getStringFromWasm0(arg0, arg1));
     };
-    imports.wbg.__wbindgen_closure_wrapper3035 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 140, __wbg_adapter_18);
+    imports.wbg.__wbindgen_closure_wrapper3233 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 163, __wbg_adapter_18);
         return addHeapObject(ret);
     };
 

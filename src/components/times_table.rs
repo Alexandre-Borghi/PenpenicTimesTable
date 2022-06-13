@@ -1,7 +1,7 @@
 use yew::function_component;
 use yew::prelude::*;
 
-use super::times_table_row_range::TimesTableRowRange;
+use super::times_table_row::TimesTableRow;
 use crate::model::TimesTableState;
 
 #[function_component(TimesTable)]
@@ -10,9 +10,7 @@ pub fn times_table() -> Html {
 
     html! {
         <form>
-            <div class={classes!("row")}>
-                <TimesTableRowRange></TimesTableRowRange>
-            </div>
+            <TimesTableRow></TimesTableRow>
         </form>
     }
 }
