@@ -58,14 +58,14 @@ PenpenicTimesTable:
         ☐ `Time` struct
             Holds `hours` (u8 in [0;23]) and `minutes` (u8 in [0;59])
 
-            ☐ `fn new(hours: u8, minutes: u8)`
+            ✔ `fn new(hours: u8, minutes: u8)` @done(22-06-13 09:23)
                 ✔ Implementation @done(22-06-12 23:16)
                 ✔ Tests @done(22-06-12 23:30)
                     ✔ Normal values @done(22-06-12 23:12)
                     ✔ Edge cases @done(22-06-12 23:21)
                     ✔ Bad values @done(22-06-12 23:30)
 
-            ☐ `fn from_time_input_value(value: String) -> Option<Self>`
+            ✔ `fn from_time_input_value(value: String) -> Option<Self>` @done(22-06-13 09:23)
                 This function should accept empty strings and strings of the form 'hh:mm' or 'hh:mm:ss'. If present,
                 seconds will therefore be discarded. If passed an empty string or any invalid string, the function must
                 return `None`. Else, it should return a `Time` struct containing hours and minutes.
