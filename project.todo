@@ -6,7 +6,7 @@ PenpenicTimesTable:
             This component must contain 5 or 6 `TimesTableRow` components (the last one being the saturday entry that
             must be togglable using a checkbox placed under the grid). These components must be placed in a <form>.
 
-            ☐ Add css to center the table in the page
+            ✔ Add css to center the table in the page @done(22-06-13 16:01)
 
             ☐ `TimesTableRow` component
                 This component must contain 2 `TimesTableRowRange`: one for the morning and one for the afternoon. It

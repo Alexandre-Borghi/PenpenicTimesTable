@@ -9,7 +9,7 @@ pub fn times_table() -> Html {
     let state_ref = use_state_eq(|| TimesTableState::from_local_storage().unwrap_or_default());
 
     html! {
-        <form>
+        <form class={classes!("container")}>
             <TimesTableRow></TimesTableRow>
         </form>
     }
