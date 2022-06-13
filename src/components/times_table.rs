@@ -11,6 +11,11 @@ pub fn times_table() -> Html {
     html! {
         <form class={classes!("container")}>
             <TimesTableRow></TimesTableRow>
+            <TimesTableRow></TimesTableRow>
+            <TimesTableRow></TimesTableRow>
+            <TimesTableRow></TimesTableRow>
+            <TimesTableRow></TimesTableRow>
+            <TimesTableRow></TimesTableRow>
         </form>
     }
 }

@@ -270,7 +270,7 @@ async function load(module, imports) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('penpenic_times_table-9069cd89429e0f01_bg.wasm', import.meta.url);
+        input = new URL('penpenic_times_table-e33c1b44aab8fb7a_bg.wasm', import.meta.url);
     }
     const imports = {};
     imports.wbg = {};
