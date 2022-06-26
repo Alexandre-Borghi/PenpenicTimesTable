@@ -10,11 +10,11 @@ pub fn times_table_row_range() -> Html {
         <>
             <div class={classes!("col")}>
                 <input ref={start_input_ref} type="time" class={classes!("form-control")} />
-                <div class={classes!("form-text")}>{ "Début" }</div>
+                // <div class={classes!("form-text")}>{ "Début" }</div>
             </div>
             <div class={classes!("col")}>
                 <input ref={end_input_ref} type="time" class={classes!("form-control")} />
-                <div class={classes!("form-text")}>{ "Fin" }</div>
+                // <div class={classes!("form-text")}>{ "Fin" }</div>
             </div>
         </>
     }
