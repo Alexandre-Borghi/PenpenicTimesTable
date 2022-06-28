@@ -2,8 +2,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
 pub struct TimesTableState {
-    days: [Day; 6],
-    show_saturday: bool,
+    pub days: [Day; 6],
+    pub show_saturday: bool,
 }
 
 impl TimesTableState {
@@ -13,26 +13,26 @@ impl TimesTableState {
     }
 }
 
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-struct Day {
-    morning: TimesRange,
-    afternoon: TimesRange,
+#[derive(Debug, Default, Clone, PartialEq, Serialize, Deserialize)]
+pub struct Day {
+    pub morning: TimesRange,
+    pub afternoon: TimesRange,
 }
 
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-struct TimesRange {
-    start: Option<Time>,
-    end: Option<Time>,
+#[derive(Debug, Default, Clone, PartialEq, Serialize, Deserialize)]
+pub struct TimesRange {
+    pub start: Option<Time>,
+    pub end: Option<Time>,
 }
 
-#[derive(Debug, Default, PartialEq, Serialize, Deserialize)]
-struct Time {
+#[derive(Debug, Default, Clone, PartialEq, Serialize, Deserialize)]
+pub struct Time {
     hours: u8,
     minutes: u8,
 }
 
 impl Time {
-    fn new(hours: u8, minutes: u8) -> Result<Self, TimesTableError> {
+    pub fn new(hours: u8, minutes: u8) -> Result<Self, TimesTableError> {
         if hours > 23 || minutes > 59 {
             Err(TimesTableError::InvalidTime)
         } else {
@@ -40,7 +40,7 @@ impl Time {
         }
     }
 
-    fn from_time_input_value(value: &str) -> Option<Self> {
+    pub fn from_time_input_value(value: &str) -> Option<Self> {
         let mut splits = value.split(':');
         let hours = splits.next()?.parse::<u8>().ok()?;
         let minutes = splits.next()?.parse::<u8>().ok()?;
@@ -51,10 +51,21 @@ impl Time {
             None
         }
     }
+
+    pub fn to_time_input_value(&self) -> String {
+        format!("{:02}:{:02}", self.hours, self.minutes)
+    }
+
+    pub fn option_to_input_value(opt: &Option<Self>) -> String {
+        match opt {
+            None => "".to_string(),
+            Some(time) => time.to_time_input_value(),
+        }
+    }
 }
 
 #[derive(Debug)]
-enum TimesTableError {
+pub enum TimesTableError {
     InvalidTime,
 }
 
@@ -148,5 +159,34 @@ mod tests {
         if Time::from_time_input_value(value).is_some() {
             panic!("Time::from_time_input_value succeeds with bad input");
         }
+    }
+
+    #[test]
+    fn time_to_input_value() {
+        test_case_time_to_input_value(Time::new(0, 0).unwrap(), "00:00");
+        test_case_time_to_input_value(Time::new(7, 55).unwrap(), "07:55");
+        test_case_time_to_input_value(Time::new(10, 30).unwrap(), "10:30");
+        test_case_time_to_input_value(Time::new(23, 59).unwrap(), "23:59");
+    }
+
+    fn test_case_time_to_input_value(t: Time, expected: &str) {
+        assert_eq!(t.to_time_input_value(), expected);
+    }
+
+    #[test]
+    fn time_option_to_input_value() {
+        assert_eq!(Time::option_to_input_value(&None), "");
+        assert_eq!(
+            Time::option_to_input_value(&Some(Time::new(0, 0).unwrap())),
+            "00:00"
+        );
+        assert_eq!(
+            Time::option_to_input_value(&Some(Time::new(7, 55).unwrap())),
+            "07:55"
+        );
+        assert_eq!(
+            Time::option_to_input_value(&Some(Time::new(23, 59).unwrap())),
+            "23:59"
+        );
     }
 }

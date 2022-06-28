@@ -192,8 +192,11 @@ dependencies = [
 name = "penpenic_times_table"
 version = "3.0.0-alpha.1"
 dependencies = [
+ "gloo-console",
+ "gloo-storage",
  "serde",
  "serde_json",
+ "web-sys",
  "yew",
 ]
 
